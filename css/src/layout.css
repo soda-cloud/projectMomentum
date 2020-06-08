@@ -1,0 +1,36 @@
+/* flex? grid? absolute? */
+[id^="layout"] {
+  font-size: 16px;
+  text-align: center;
+}
+
+#main-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 10px;
+  height: 100vh;
+}
+
+#layout-bg {
+  height: 0;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  height: 40px;
+}
+
+#layout-bg-info {
+  text-align: left;
+  width: 20%;
+}
+
+#layout-todoList {
+  text-align: right;
+  width: 20%;
+}

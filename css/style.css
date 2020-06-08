@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Noto+Sans+KR");
+@import "./font-face/font-meteocons.css";
+
+/* modules */
+@import "./src/layout.css";
+/* @import "./src/background.css";
+@import "./src/weather.css"; */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+i {
+  text-decoration: none;
+}
+body {
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #d8d8d8;
+  background-color: #f0f3f4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* from momentum */
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  min-height: 100%;
+  overflow: hidden;
+  background: #fff;
+}
+
+[data-icon] {
+  font-family: "MeteoconsRegular";
+}
