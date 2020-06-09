@@ -8,6 +8,7 @@
   }
   .greetings-userIs i {
     cursor: pointer;
+    z-index: 100;
   }
   #layout-greetings .greetings-userNot input{
     font-size: 100%;

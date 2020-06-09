@@ -1,10 +1,10 @@
 // state
-let state = JSON.parse(localStorage.getItem('weatherState'))
+let state = JSON.parse(localStorage.getItem('weatherState'));
 
 // utils
-const API_KEY = '2a12527f777b1cbb783fcf5604ac51ae'
-const needForecast = true ? '' : 'daily'
-const unitSetting = true ? 'metric' : 'imperial'
+const API_KEY = '2a12527f777b1cbb783fcf5604ac51ae';
+const needForecast = true ? '' : 'daily';
+const unitSetting = true ? 'metric' : 'imperial';
 const icons = {
   'clear sky': 'B',
   'few clouds': 'H',
@@ -18,16 +18,16 @@ const icons = {
   snow: 'U',
   mist: 'M',
   'moderate rain': 'R',
-  'light rain': 'R'
+  'light rain': 'R',
   // "C":'*',
   // "F":'+',
-}
+};
 // DOMs
-const $layoutWeather = document.getElementById('layout-weather')
+const $layoutWeather = document.getElementById('layout-weather');
 
 // templates
 const Template = (function () {
-  function Template () {}
+  function Template() {}
   Template.prototype.init = () => {
     $layoutWeather.innerHTML = `
     <section class="current">
@@ -40,8 +40,8 @@ const Template = (function () {
         </ul>
       </section>
     </section>
-    `
-  }
+    `;
+  };
   Template.prototype.current = () => {
     document.querySelector('.current').innerHTML = `
             <div class="summary">
@@ -49,14 +49,15 @@ const Template = (function () {
               <span class="temp">${Math.round(state.current.temp)}°</span>
             </div>
             <div class="location">${state.timezone}</div>
-          `
-  }
+          `;
+  };
   Template.prototype.selected = () => {
-    console.log(state)
     document.querySelector('.selected').innerHTML = `
             <div class="selected-location">${state.timezone}</div>
-            <div class="selected-status">${state.days[0].weather[0].description[0].toUpperCase() +
-              state.days[0].weather[0].description.slice(1)}</div>
+            <div class="selected-status">${
+              state.days[0].weather[0].description[0].toUpperCase() +
+              state.days[0].weather[0].description.slice(1)
+            }</div>
             <div class="selected-summary">
               <span class="selected-icon">${
                 icons[state.days[0].weather[0].description]
@@ -69,12 +70,12 @@ const Template = (function () {
               )}°</span>
             </div>
           
-          `
-  }
+          `;
+  };
   Template.prototype.forecast = () => {
-    let listItems = ''
+    let listItems = '';
 
-    state.days.forEach(day => {
+    state.days.forEach((day) => {
       listItems += `
                     <li class="forecast-item">
                       <div class="item-name">${new Date(day.dt * 1000)
@@ -91,28 +92,23 @@ const Template = (function () {
                         day.temp.min
                       )}°</span>
                     </li>
-                  `
-    })
-    document.querySelector('.forecast-list').innerHTML = listItems
-  }
+                  `;
+    });
+    document.querySelector('.forecast-list').innerHTML = listItems;
+  };
+  return Template;
+})();
 
-  //   <section class="selected-and-forecast">
-
-  // </section>
-
-  return Template
-})()
-
-const template = new Template()
+const template = new Template();
 
 // functions
 const render = () => {
-  state = JSON.parse(localStorage.getItem('weatherState'))
-  template.init()
-  template.current()
-  template.selected()
-  template.forecast()
-}
+  state = JSON.parse(localStorage.getItem('weatherState'));
+  template.init();
+  template.current();
+  template.selected();
+  template.forecast();
+};
 
 const setState = (current, daily, timezone) => {
   localStorage.setItem(
@@ -122,38 +118,38 @@ const setState = (current, daily, timezone) => {
         dt: current.dt,
         temp: current.temp,
         description: current.weather[0].description,
-        mainly: current.weather[0].main
+        mainly: current.weather[0].main,
       },
       days: daily.slice(0, 5),
-      timezone
+      timezone,
     })
-  )
-}
+  );
+};
 
 const getData = async () => {
-  const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${37.5326}&lon=${127.024612}&exclude=hourly${needForecast}&appid=${API_KEY}&units=${unitSetting}`
+  const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${37.5326}&lon=${127.024612}&exclude=hourly${needForecast}&appid=${API_KEY}&units=${unitSetting}`;
 
-  const response = await fetch(URL).catch(console.log)
-  const data = await response.json()
-  const { current, daily, timezone } = data
+  const response = await fetch(URL).catch(console.log);
+  const data = await response.json();
+  const { current, daily, timezone } = data;
 
-  setState(current, daily, timezone)
-}
+  setState(current, daily, timezone);
+};
 
 const initWeather = async () => {
-  if (!state) await getData()
-  render()
-}
+  if (!state) await getData();
+  render();
+};
 
 $layoutWeather.onclick = ({ target }) => {
-  if (!target.matches('.location')) return
-  const $modal = document.querySelector('.selected-forecast')
-  $modal.classList.toggle('weather-active')
-}
+  if (!target.matches('.location')) return;
+  const $modal = document.querySelector('.selected-forecast');
+  $modal.classList.toggle('weather-active');
+};
 
 $layoutWeather.onclick = ({ target }) => {
-  if (!target.matches('.forecast-item')) return
-  console.log(target)
-}
+  if (!target.matches('.forecast-item')) return;
+  console.log(target);
+};
 
-export { initWeather }
+export { initWeather };

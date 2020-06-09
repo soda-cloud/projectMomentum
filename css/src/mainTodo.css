@@ -37,6 +37,11 @@
     text-align: center;
 }
 
-.main-todo-is{
+.main-todo-text{
+    position: relative;
+}
+.main-todo-cherrUp{
+    position: absolute;
+    left: 48%;
     
 }
