@@ -15,8 +15,6 @@ function changeClcok (){
     const percentUnit = Math.abs(startTime-endTime)
 
     //시계 - 두자리 수를 맞출 것
-    
-
     $clockDigital.textContent = `${
         nowHours >= 10 ? nowHours : '0' + nowHours 
         }:${
@@ -29,8 +27,9 @@ function changeClcok (){
         Math.ceil((Math.abs(nowHours-startTime)+(nowMinutes/60))/percentUnit*100)
         :nowHours >= endTime ?
         Math.ceil(((nowHours-endTime)+(nowMinutes/60))/percentUnit*100)
-        :Math.ceil(((nowHours+(24-endTime))+(nowMinutes/60))/percentUnit*100)
+        :'+'+ Math.ceil(((nowHours+(24-endTime))+(nowMinutes/60))/percentUnit*100)
         }%`;
+        setTimeout(changeClcok,1000)
     };
 
 
