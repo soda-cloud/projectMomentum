@@ -3,8 +3,8 @@
 
 /* modules */
 @import "./src/layout.css";
-/* @import "./src/background.css";
-@import "./src/weather.css"; */
+@import "./src/background.css";
+@import "./src/weather.css";
 
 * {
   box-sizing: border-box;
