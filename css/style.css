@@ -3,8 +3,11 @@
 
 /* modules */
 @import "./src/layout.css";
-/* @import "./src/background.css";
-@import "./src/weather.css"; */
+@import "./src/background.css";
+@import "./src/greeting.css";
+@import "./src/mainTodo.css";
+@import "./src/todoList.css";
+/*@import "./src/weather.css"; */
 
 * {
   box-sizing: border-box;
@@ -37,3 +40,5 @@ body {
 #layout-weather {
   user-select: none;
 }
+
+
