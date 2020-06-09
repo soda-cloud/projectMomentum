@@ -32,16 +32,19 @@ function changeClcok (){
         setTimeout(changeClcok,1000)
     };
 
-
-
 //1.미리 시간을 넣을 수 있는 html을 넣고 시작
 function renderClock(){
     $layoutClock.innerHTML = `<div class="clock-digital"></div>
-    <div class="clock-percent"></div>
+    <div class="clock-percent clock-active"></div>
     <button class="clock-toggle-btn"></button>` 
-    
     changeClcok();
-
 }
+
+// 3. 버튼의 클릭이벤트
+$layoutClock.onclick = (e) => {
+    if(!e.target.matches('button')) return 
+    $layoutClock.querySelectorAll('div').forEach( clock => clock.classList.toggle('clock-active')); 
+}
+
 
 window.onload = renderClock();
