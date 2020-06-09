@@ -28,7 +28,7 @@ const Template = (function () {
 const template = new Template()
 
 const getData = async () => {
-  const API_KEYS = '5xymUtfUo6J3Egq7PpJUH82iEyu_qr2-c8RyiD_mz1U'
+  const API_KEYS = 'LKF1XU9orFI6ANT13pDvuayP2gVR1vft3i8BxdSdnVg'
   const collectionId = 10593713
   const URL = `https://api.unsplash.com/photos/random/?collections=${collectionId}&q=99&fm=jpg&crop=entropy&w=2048&cs=tinysrgb&fit=max&client_id=${API_KEYS}`
 
@@ -86,4 +86,4 @@ template.$layoutBgInfo.onclick = ({ target }) => {
   console.log('end')
 }
 
-initBackground()
+export { initBackground }

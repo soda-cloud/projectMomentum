@@ -8,8 +8,9 @@
     <link href="./css/style.css" type="text/css" rel="stylesheet" />
     <script defer src="./js/app.mjs" type="module"></script>
 
-    
     <link rel="stylesheet" href="./css/src/background.css" />
+<!--    <link rel="stylesheet" href="./css/src/weather.css" /> -->
+
     <script
       src="https://kit.fontawesome.com/1bb6067f5f.js"
       crossorigin="anonymous"
@@ -44,9 +45,9 @@
 
         <!-- 황태현 메인투두-->
         <section id="layout-main-todo">
-          <div class="main-todo-not">
+          <div class="main-todo-not ">
             <div>What is your main focus for today?</div>
-            <input type="text">
+            <input type="text" size=1>
           </div>
           <div class="main-todo-is">
             <div>TODAY</div>
@@ -69,7 +70,12 @@
 
         <!-- 황태현 투두리스트-->
         <section id="layout-todoList">
-          투두리스트
+          <div class="todoList-toogle">todo list</div>
+          <div class="todoList-modal todoList-showing">
+            <ul class="todoList-text">
+            </ul>
+            <input type="text" placeholder="New Todo">
+          </div>
         </section>
       </footer>
     </div>

@@ -17,6 +17,8 @@ const cherrUp = ['Good Job!', 'Greate Work!', 'Nice', 'Way to go!']
 // function
 const inputPaint = () => {
   todoNotInput.value = ''
+  mainIsCk.checked = false
+  mainIsText.classList.remove('main-todo-checked')
   mainTodoNot.classList.remove('main-todo-showing')
   mainTodoIs.classList.add('main-todo-showing')
   todoNotInput.addEventListener('keypress', todoInput)
@@ -43,8 +45,7 @@ const mainTodoDel = () => {
 const changeCompleted = () => {
   mainIsText.classList.toggle('main-todo-checked')
   if (mainIsText.matches('.main-todo-checked')) {
-    console.log('test')
-    let num = Math.floor(Math.random() * 3)
+    const num = Math.floor(Math.random() * 3)
     mainTodoCherrUp.textContent = cherrUp[num]
     setTimeout(() => {
       mainTodoCherrUp.textContent = ''
@@ -55,6 +56,7 @@ const changeCompleted = () => {
 const todoInput = e => {
   if (e.keyCode !== 13) return
   saveTodo(e.target.value)
+  console.log('asd')
 }
 
 const chackTodo = () => {

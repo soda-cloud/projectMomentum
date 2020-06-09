@@ -19,14 +19,14 @@ const clock = () => {
   const todayDate = new Date()
   const hour = todayDate.getHours()
   let greeting = ''
-
-  if (hour > 6 || hour <= 12) {
+  if (hour >= 6 && hour <= 12) {
     greeting = 'morning'
-  } else if (hour > 12 || hour <= 18) {
+  } else if (hour >= 13 && hour <= 18) {
     greeting = 'afternoon'
   } else {
     greeting = 'night'
   }
+
   greetingClock.textContent = greeting
 }
 
