@@ -33,3 +33,25 @@ body {
 [data-icon] {
   font-family: "MeteoconsRegular";
 }
+
+
+/*greeting*/
+.greeting-showing{
+  display: none;
+}
+#layout-greetings{
+  font-size: 337.5%
+}
+#layout-greetings .greetings-userNot input{
+  color: #fff;
+  border: 0px;
+  border-bottom: 1px solid #fff;
+}
+
+/*main-todo*/
+.main-todo-showing{
+  display: none;
+}
+.main-todo-checked{
+  text-decoration: line-through;
+}
