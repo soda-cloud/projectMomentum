@@ -1,5 +1,7 @@
 import { initWeather } from "./src/weather.mjs";
+import { initBackground } from "./src/background.mjs";
 
-window.onload = async () => {
-  await initWeather();
+window.onload = () => {
+  initWeather();
+  initBackground();
 };
