@@ -6,7 +6,7 @@
   text-align: left;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-end;
+  justify-content: center;
   position: relative;
   cursor: pointer;
 }
@@ -16,9 +16,10 @@
   width: 200%;
   min-height: 40px;
   position: absolute;
-  left: 0%;
+  left: -100%;
   bottom: 120%;
   padding: 20px;
+
   transition: all 1s;
 }
 .todoList-modal ul {

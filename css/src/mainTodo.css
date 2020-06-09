@@ -3,7 +3,6 @@
 
 #layout-main-todo{
     padding: 20px;
-    
 
 }
 .main-todo-showing{
@@ -37,11 +36,6 @@
     text-align: center;
 }
 
-.main-todo-text{
-    position: relative;
-}
-.main-todo-cherrUp{
-    position: absolute;
-    left: 48%;
+.main-todo-is{
     
 }
