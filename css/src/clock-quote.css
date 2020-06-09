@@ -1,5 +1,6 @@
 /*clock*/
 #layout-clock{
+    user-select : none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,6 +36,9 @@
 }
 
 /*quote*/
+#layout-quote{
+    user-select : none;
+}
 .quote-text{
     font-size: 18px;
 }

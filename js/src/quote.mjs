@@ -10,8 +10,9 @@ function renderQuote(){
    if(!quote.length){ $layoutQuote.innerHTML = `<div>이제 그만~</div>`
   }else{
     $layoutQuote.innerHTML = `<div class="quote-text">${resultQuote.text}</div>
-  <div class="quote-author">${resultQuote.author}</div>
-  <button class="quote-alter-btn">안들어가나?</botton>`
+  <div class="quote-author">${resultQuote.author}
+  <button class="quote-alter-btn">안들어가나?</botton></div>
+  `
   return num = quote.indexOf(resultQuote) ;}
 }
 
