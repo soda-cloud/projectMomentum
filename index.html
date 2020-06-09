@@ -11,7 +11,11 @@
     <script defer src="./js/app.mjs" type="module"></script>
 
     <link rel="stylesheet" href="./css/src/background.css" />
+<<<<<<< HEAD
     <!-- <link rel="stylesheet" href="./css/src/weather.css" /> -->
+=======
+<!--    <link rel="stylesheet" href="./css/src/weather.css" /> -->
+>>>>>>> 32392062770d9d1f7c7d2eed4d2bb9694ff5acd4
 
     <script
       src="https://kit.fontawesome.com/1bb6067f5f.js"
@@ -39,12 +43,28 @@
 
         <!-- 황태현 헬로유저-->
         <section id="layout-greetings">
-          Hello User
+          Good <span class="greeting-clock"></span>
+          <span class="greetings-userNot">
+            <input type="text" size=1>
+          </span>
+          <span class="greetings-userIs">
+             <span></span> <i class="fas fa-edit"></i>
+          </span>
         </section>
 
         <!-- 황태현 메인투두-->
         <section id="layout-main-todo">
-          메인투두
+          <div class="main-todo-not ">
+            <div>What is your main focus for today?</div>
+            <input type="text" size=30>
+          </div>
+          <div class="main-todo-is">
+            <div>TODAY</div>
+            <div class="main-todo-text">
+              <input type="checkbox"> <span></span> <i class="far fa-times-circle"></i>
+              <div class='main-todo-cherrUp'></div>
+            </div>
+          </div>
         </section>
       </main>
 
@@ -62,7 +82,13 @@
 
         <!-- 황태현 투두리스트-->
         <section id="layout-todoList">
-          투두리스트
+          <div class="todoList-toogle">todo list</div>
+          <div class="todoList-modal todoList-showing">
+            <div>TODAY</div>
+            <ul class="todoList-text">
+            </ul>
+            <input type="text" placeholder="New Todo">
+          </div>
         </section>
       </footer>
     </div>

@@ -1,0 +1,41 @@
+
+/*main-todo*/
+
+#layout-main-todo{
+    padding: 20px;
+
+}
+.main-todo-showing{
+    display: none;
+}
+.main-todo-checked{
+    text-decoration: line-through;
+}
+
+.main-todo-text span,
+.main-todo-not input,
+.main-todo-text i{
+    font-size: 200%;
+}
+
+.main-todo-text input{
+    zoom: 1.5;
+}
+
+
+.main-todo-not div{
+    font-size: 200%;
+}
+.main-todo-not input{
+    padding: 10px;
+    color: #fff;
+    outline-style: none;
+    border:0;
+    border-bottom: 1px solid #fff;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+}
+
+.main-todo-is{
+    
+}
