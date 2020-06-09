@@ -42,10 +42,10 @@
 
 .quote-author{
     font-size: 14px;
-    display: none;
+    /* display: none; */
     transition: all 2s;
 }
 
-.quote-text:hover + .quote-author{
+/* :hover + .quote-author{
     display: block;
-}
+} */
