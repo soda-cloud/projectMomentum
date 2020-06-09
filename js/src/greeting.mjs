@@ -58,7 +58,7 @@ const userNameIs = () => {
 // Event
 const inputSize = e => {
   // e.target.value.length 글자 수
-
+  const length = e.target.value.length
   userInputText.setAttribute('size', +length + 1)
 }
 const userInput = e => {
