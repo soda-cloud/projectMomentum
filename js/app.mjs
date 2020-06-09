@@ -1,7 +1,7 @@
-import { initWeather } from "./src/weather.mjs";
 import { initBackground } from "./src/background.mjs";
+import { initWeather } from "./src/weather.mjs";
 
 window.onload = () => {
-  initWeather();
   initBackground();
+  initWeather();
 };

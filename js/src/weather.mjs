@@ -1,5 +1,5 @@
 // state
-let state = localStorage.getItem("weatherState");
+let state = JSON.parse(localStorage.getItem("weatherState"));
 
 // utils
 const API_KEY = "2a12527f777b1cbb783fcf5604ac51ae";
@@ -21,27 +21,26 @@ const icons = {
   // "C":'*',
   // "F":'+',
 };
+// DOMs
+const $layoutWeather = document.getElementById("layout-weather");
+const $selectedAndForecast = document.createElement("selected-and-forecast");
 
 // templates
 const Template = (function () {
-  function Template() {
-    this.$layoutWeather = document.getElementById("layout-weather");
-    this.$selectedAndForecast = document.createElement("selected-and-forecast");
-    document.querySelector(".current").after(this.$selectedAndForecast);
-  }
+  function Template() {}
 
   Template.prototype.current = () => {
-    this.$layoutWeather.innerHTML = `
+    $layoutWeather.innerHTML = `
           <section class="current">
             <div class="summary">
               <div class="icon">${icons[state.current.description]}</div>
               <div class="stats">${state.current.temp}°</div>
             </div>
-            <div class="location">${state}</div>
+            <div class="location">${state.timezone}</div>
           </section>`;
   };
   Template.prototype.selected = (loc, status, icon, stats) => {
-    this.$selectedAndForecast.innerHTML = `
+    $selectedAndForecast.innerHTML = `
           <section class="selected">
             <div class="selected-location"></div>
             <div class="selected-status"></div>
@@ -52,34 +51,36 @@ const Template = (function () {
           </section>`;
   };
   Template.prototype.forecast = () => {
-    this.$selectedAndForecast`<section class="forecast">
-            <ul class="forecast-list">
-              <li class="forecast-item">
-                <div class="item-name">${state}</div>
-                <span class="item-icon">${state}</span>
-                <span class="item-temp-high">${state}°</span>
-                <span class="item-temp-low">${state}°</span>
-              </li>
-            </ul>
-          </section>`;
+    // this.$selectedAndForecast.fistElementChild
+    //       `<section class="forecast">
+    //         <ul class="forecast-list">
+    //           <li class="forecast-item">
+    //             <div class="item-name">${state}</div>
+    //             <span class="item-icon">${state}</span>
+    //             <span class="item-temp-high">${state}°</span>
+    //             <span class="item-temp-low">${state}°</span>
+    //           </li>
+    //         </ul>
+    //       </section>`;
   };
 
   //   <section class="selected-and-forecast">
 
   // </section>
 
-  return Template();
+  return Template;
 })();
+
 const template = new Template();
 
 // functions
 const render = () => {
+  state = JSON.parse(localStorage.getItem("weatherState"));
   template.current();
   template.selected();
-  template.forecast();
 };
 
-const setState = (current, daily) => {
+const setState = (current, daily, timezone) => {
   localStorage.setItem(
     "weatherState",
     JSON.stringify({
@@ -107,7 +108,9 @@ const getData = async () => {
   setState(current, daily, timezone);
 };
 
-export const initWeather = async () => {
+const initWeather = async () => {
   if (!state) await getData();
   render();
 };
+
+export { initWeather };

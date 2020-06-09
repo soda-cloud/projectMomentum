@@ -13,7 +13,7 @@
   right: 0;
   bottom: 0;
   z-index: -2;
-  animation: fadeIn 300ms ease-in-out forward;
+  animation: fadeIn 400ms ease-in-out forward;
 }
 @keyframes fadeIn {
   from {
@@ -27,4 +27,37 @@
 .background-info {
   white-space: nowrap;
   font-weight: 300;
+
+  height: 50px;
+  width: 80%;
+  margin-left: 20px;
+}
+.background-info:hover {
+  transition: all ease-in-out 400ms;
+}
+
+.info-title {
+  color: rgba(255, 255, 255, 0.7);
+}
+.background-info:hover .info-title {
+  opacity: 1;
+  transform: translate3d(0, -10px, 0);
+}
+
+.info-more {
+  white-space: nowrap;
+  font-weight: 300;
+
+  color: rgba(255, 255, 255, 0.4);
+
+  opacity: 0;
+  transform: translate3d(0, -20px, 0);
+}
+.background-info:hover .info-more {
+  opacity: 1;
+  transform: translate3d(0, -5px, 0);
+  transition: opacity, transform cubic-bezier(0.22, 0.61, 0.36, 1) 400ms;
+}
+.info-more:hover {
+  color: rgba(255, 255, 255, 0.8);
 }
