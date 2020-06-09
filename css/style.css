@@ -31,6 +31,10 @@ body {
   background: #fff;
 }
 
-[data-icon] {
-  font-family: "MeteoconsRegular";
+[class$="icon"] {
+  font-family: MeteoconsRegular;
+}
+
+#layout-weather {
+  user-select: none;
 }

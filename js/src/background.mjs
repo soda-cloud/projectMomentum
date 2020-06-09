@@ -59,7 +59,7 @@ const render = () => {
 };
 
 // flag
-const isExpired = () => state.timestamp === new Date().getDate();
+const isExpired = () => state.timestamp !== new Date().getDate();
 
 const initBackground = async () => {
   if (!state) {
@@ -72,18 +72,13 @@ const initBackground = async () => {
 
 template.$layoutBgInfo.onclick = ({ target }) => {
   if (!target.matches(".fix-icon")) return;
+
+  //set State 'fixed'
+  state = { ...state, fixed: !state.fixed };
+  localStorage.setItem("backgroundState", JSON.stringify(state));
   //toggle classes
   target.classList.toggle("far");
   target.classList.toggle("fas");
-  //set State 'fixed'
-  console.log("start");
-
-  localStorage.setItem(
-    "backgroundState",
-    JSON.stringify({ ...state, fixed: !state.fixed })
-    // 이거 확인필요
-  );
-  console.log("end");
 };
 
 export { initBackground };

@@ -33,7 +33,7 @@ function changeClcok (){
     };
 
 //1.미리 시간을 넣을 수 있는 html을 넣고 시작
-function renderClock(){
+export function renderClock(){
     $layoutClock.innerHTML = `<div class="clock-digital"></div>
     <div class="clock-percent clock-active"></div>
     <button class="clock-toggle-btn"></button>` 
@@ -47,4 +47,4 @@ $layoutClock.onclick = (e) => {
 }
 
 
-window.onload = renderClock();
+// window.onload = renderClock();

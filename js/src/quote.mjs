@@ -2,13 +2,11 @@ let quote = []
 const $layoutQuote = document.getElementById('layout-quote')
 let num = ''
 
-console.log(typeof([]))
 //인덱스로 접근한 쿼츠를 변수에 담고 해당 내용을 랜더한다. 
 //로드 할 때마다 다시 그릴 수 있으니, 랜더에 값을 할당해버림
 //2)
 function renderQuote(){
   let resultQuote = quote[randomIndex()];
-  console.log(resultQuote)
    if(!quote.length){ $layoutQuote.innerHTML = `<div>이제 그만~</div>`
   }else{
     $layoutQuote.innerHTML = `<div class="quote-text">${resultQuote.text}</div>
@@ -31,11 +29,10 @@ $layoutQuote.onclick= (e) =>{
   quote =quote.map(cite => quote[num] === cite ? {...cite, selection: false}: cite );
   alterQuote();
   renderQuote();  
-  console.log(quote)
 }
 
 //1)
-function getQuote() {
+export function getQuote() {
 
     quote = [{
         "text": "Genius is one percent inspiration and ninety-nine percent perspiration.",
@@ -117,4 +114,5 @@ function getQuote() {
     renderQuote()    
     }
 
-    window.onload = getQuote();
+
+    // window.onload = getQuote();
