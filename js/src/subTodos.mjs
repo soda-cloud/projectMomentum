@@ -1,25 +1,26 @@
 // DOMs
-const layoutTodoList = document.getElementById("layout-todoList");
-const todoListText = layoutTodoList.querySelector(".todoList-text");
-const inputTodo = layoutTodoList.querySelector("input");
-const todoListModal = layoutTodoList.querySelector(".todoList-modal");
-const todoListToogle = layoutTodoList.querySelector(".todoList-toogle");
+const layoutTodoList = document.getElementById('layout-todoList');
+const todoListText = layoutTodoList.querySelector('.todoList-text');
+const inputTodo = layoutTodoList.querySelector('input');
+const todoListModal = layoutTodoList.querySelector('.todoList-modal');
+const todoListToogle = layoutTodoList.querySelector('.todoList-toogle');
 
 // status
 let todoList = [];
-const TODOLIST_LS = "todoList";
+const TODOLIST_LS = 'todoList';
 
 const getTodoList = () => {
   todoList = JSON.parse(localStorage.getItem(TODOLIST_LS));
   if (todoList === null) {
     todoList = [];
   }
-  inputTodo.addEventListener("keypress", inputText);
-  todoListToogle.addEventListener("click", showModal);
-  todoListText.addEventListener("click", deleteBtn);
-  todoListText.addEventListener("change", change);
+  inputTodo.addEventListener('keypress', inputText);
+  todoListToogle.addEventListener('click', showModal);
+  todoListText.addEventListener('click', deleteBtn);
+  todoListText.addEventListener('change', change);
   render();
 };
+
 const change = (e) => {
   const id = e.target.parentNode.id;
   todoList = todoList.map((todo) =>
@@ -38,7 +39,7 @@ const inputText = (e) => {
     { id: getTodoId(), content: e.target.value, completed: false },
     ...todoList,
   ];
-  e.target.value = "";
+  e.target.value = '';
   saveTodo();
   render();
 };
@@ -46,29 +47,30 @@ const inputText = (e) => {
 const delTodo = (id) => {
   todoList = todoList.filter((todo) => todo.id !== +id);
   render();
+  saveTodo();
 };
 
 const getTodoId = () =>
   todoList.length ? Math.max(...todoList.map((todo) => todo.id)) + 1 : 1;
 
 const showModal = () => {
-  todoListModal.classList.toggle("todoList-showing");
+  todoListModal.classList.toggle('todoList-showing');
 };
 const deleteBtn = (e) => {
-  if (!e.target.matches("i")) return;
+  if (!e.target.matches('i')) return;
   delTodo(e.target.parentNode.id);
 };
 
 const render = () => {
-  let html = "";
+  let html = '';
   todoList.forEach(({ id, content, completed }) => {
     html += `  
-    <li id="${id}" class="todo-item">
+    <li id="${id}" class="todoList-item">
         <input id="ck-${id}" class="checkbox" type="checkbox" ${
-      completed ? "checked" : ""
+      completed ? 'checked' : ''
     }>
         <label for="ck-${id}">${content}</label>
-        <i class="remove-todo far fa-times-circle"></i>
+        <i class="todoList-remove far fa-times-circle"></i>
     </li>
         `;
   });

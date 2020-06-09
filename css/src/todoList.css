@@ -6,20 +6,19 @@
   text-align: left;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  justify-content: flex-end;
   position: relative;
   cursor: pointer;
 }
 
 .todoList-modal {
   background: rgba(0, 0, 0);
-  width: 200%;
+  width: 100%;
   min-height: 40px;
   position: absolute;
-  left: -100%;
+  left: 0%;
   bottom: 120%;
   padding: 20px;
-
   transition: all 1s;
 }
 .todoList-modal ul {
@@ -38,6 +37,19 @@
   list-style-type: none;
 }
 
+
+.todoList-remove{
+  position: absolute;
+  right: 10%;
+}
+.todoList-item{
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .todoList-text li input[checked] + label {
   text-decoration: line-through;
+  
 }

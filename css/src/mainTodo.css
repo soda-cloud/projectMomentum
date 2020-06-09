@@ -3,7 +3,10 @@
 
 #layout-main-todo{
     padding: 20px;
-
+    height: 200px;
+    position: relative;
+    
+    user-select : none;
 }
 .main-todo-showing{
     display: none;
@@ -19,9 +22,8 @@
 }
 
 .main-todo-text input{
-    zoom: 1.5;
+    zoom: 2;
 }
-
 
 .main-todo-not div{
     font-size: 200%;
@@ -36,6 +38,9 @@
     text-align: center;
 }
 
-.main-todo-is{
-    
+.main-todo-cherrUp{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
