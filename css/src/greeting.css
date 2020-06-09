@@ -3,7 +3,9 @@
     display: none;
   }
   #layout-greetings{
-    font-size: 337.5%
+    font-size: 337.5%;
+    
+    user-select : none;
   }
   #layout-greetings .greetings-userNot input{
     font-size: 100%;
@@ -16,6 +18,8 @@
     background-color: rgba(0, 0, 0, 0);
     max-width: 40%;
     transition: all 1s;
-
   }
   
+  .greetings-userIs i{
+    cursor: pointer;
+  }
