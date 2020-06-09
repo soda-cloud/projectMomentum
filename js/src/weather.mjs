@@ -1,8 +1,10 @@
 // state
 let state = JSON.parse(localStorage.getItem("weatherState"));
-
+let geoSuccess = false;
 // utils
 const API_KEY = "2a12527f777b1cbb783fcf5604ac51ae";
+const DEFAULT_LAT = 37;
+const DEFAULT_LON = 127;
 const needForecast = true ? "" : "daily";
 const unitSetting = true ? "metric" : "imperial";
 const icons = {
@@ -19,6 +21,7 @@ const icons = {
   mist: "M",
   "moderate rain": "R",
   "light rain": "R",
+  haze: "M",
   // "C":'*',
   // "F":'+',
 };
@@ -51,22 +54,22 @@ const Template = (function () {
             <div class="location">${state.timezone}</div>
           `;
   };
-  Template.prototype.selected = () => {
+  Template.prototype.selected = (id = 0) => {
     document.querySelector(".selected").innerHTML = `
             <div class="selected-location">${state.timezone}</div>
             <div class="selected-status">${
-              state.days[0].weather[0].description[0].toUpperCase() +
-              state.days[0].weather[0].description.slice(1)
+              state.days[+id].weather[0].description[0].toUpperCase() +
+              state.days[+id].weather[0].description.slice(1)
             }</div>
             <div class="selected-summary">
               <span class="selected-icon">${
-                icons[state.days[0].weather[0].description]
+                icons[state.days[+id].weather[0].description]
               }</span>
               <span class="selected-temp-high">${Math.round(
-                state.days[0].temp.max
+                state.days[+id].temp.max
               )}°</span>
               <span class="selected-temp-low">${Math.round(
-                state.days[0].temp.min
+                state.days[+id].temp.min
               )}°</span>
             </div>
           
@@ -75,9 +78,9 @@ const Template = (function () {
   Template.prototype.forecast = () => {
     let listItems = "";
 
-    state.days.forEach((day) => {
+    state.days.forEach((day, i) => {
       listItems += `
-                    <li class="forecast-item">
+                    <li id="${i}"class="forecast-item">
                       <div class="item-name">${new Date(day.dt * 1000)
                         .toString()
                         .slice(0, 3)
@@ -103,6 +106,7 @@ const template = new Template();
 
 // functions
 const render = () => {
+  console.log(3, 6);
   state = JSON.parse(localStorage.getItem("weatherState"));
   template.init();
   template.current();
@@ -110,7 +114,7 @@ const render = () => {
   template.forecast();
 };
 
-const setState = (lat, lon, current, daily, timezone) => {
+const setState = async (lat, lon, current, daily, timezone) => {
   localStorage.setItem(
     "weatherState",
     JSON.stringify({
@@ -124,12 +128,17 @@ const setState = (lat, lon, current, daily, timezone) => {
       },
       days: daily.slice(0, 5),
       timezone,
+      realLocation: geoSuccess,
     })
   );
 };
 
 const getData = async () => {
-  const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${state.lat}&lon=${state.lon}&exclude=hourly${needForecast}&appid=${API_KEY}&units=${unitSetting}`;
+  const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${
+    state ? state.lat : DEFAULT_LAT
+  }&lon=${
+    state ? state.lon : DEFAULT_LON
+  }&exclude=hourly${needForecast}&appid=${API_KEY}&units=${unitSetting}`;
 
   const response = await fetch(URL).catch(console.log);
   const data = await response.json();
@@ -141,37 +150,43 @@ const getData = async () => {
 const askLocation = async () => {
   navigator.geolocation.getCurrentPosition(successToLocate, failtoLocate);
 };
-const successToLocate = (res) => {
+
+const successToLocate = async (response) => {
+  geoSuccess = true;
   state = JSON.parse(localStorage.getItem("weatherState"));
   localStorage.setItem(
     "weatherState",
     JSON.stringify({
       ...state,
-      lat: res.coords.latitude,
-      lon: res.coords.longitude,
+      lat: response.coords.latitude,
+      lon: response.coords.longitude,
+      realLocation: geoSuccess,
     })
   );
-  getData();
+  await getData();
+  render();
 };
+
 const failtoLocate = (e) => console.log("rejected to locate :" + e);
 
 const initWeather = async () => {
+  console.log(0);
   if (!state) await getData();
+  /*초기표시*/
   render();
-  await askLocation();
+  /*정보동의-응답수신하면, 실제 위치 데이터로 다시 랜더링*/
+  askLocation();
 };
 
-$layoutWeather.onclick = ({ target }) => {
-  console.log(target);
+window.onclick = ({ target }) => {
   if (!target.matches(".location")) return;
-  console.log(target);
   const $modal = document.querySelector(".selected-forecast");
   $modal.classList.toggle("weather-active");
 };
 
-$layoutWeather.onclick = ({ target }) => {
-  if (!target.matches(".forecast-item")) return;
-  console.log(target);
+window.onclick = ({ target }) => {
+  if (!target.matches(".item-temp-high")) return;
+  template.selected(target.id);
 };
 
 export { initWeather };

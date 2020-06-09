@@ -3,12 +3,15 @@
   position: relative;
   text-align: right;
 }
+
 .location {
   font-size: 60%;
-  color: rgb(221, 221, 221);
+  color: rgb(240, 240, 240);
 }
+
 /* 모달창 */
 .selected-forecast {
+  z-index: 3;
   position: absolute;
   top: 90px;
   right: 10px;
@@ -18,8 +21,8 @@
   border-radius: 5px;
   background-color: rgba(32, 32, 32, 0.95);
 
+  /* display: none; */
   transform: translate3d(3px, -3px, 0);
-  opacity: 0;
   transition: all ease-in-out 180ms;
 }
 .selected-forecast:after {
@@ -90,6 +93,6 @@
 
 /* EVENT DRIVEN */
 .weather-active {
-  opacity: 1;
+  display: block;
   transform: translate3d(0, 0, 0);
 }
