@@ -1,0 +1,21 @@
+/*greeting*/
+.greeting-showing{
+    display: none;
+  }
+  #layout-greetings{
+    font-size: 337.5%
+  }
+  #layout-greetings .greetings-userNot input{
+    font-size: 100%;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    border: 0px;
+    outline-style: none;
+    border-bottom: 1px solid #fff;
+    background-color: rgba(0, 0, 0, 0);
+    max-width: 40%;
+    transition: all 1s;
+
+  }
+  

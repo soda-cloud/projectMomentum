@@ -1,0 +1,46 @@
+
+/*todoList*/
+.todoList-showing{
+  opacity: 0;
+}
+#layout-todoList {
+  text-align: left;
+  width: 150px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+
+}
+
+.todoList-modal{
+  background:rgba(0, 0, 0);
+  width: 200%;
+  min-height: 40px;
+  position: absolute;
+  left: -100%;
+  bottom: 120%;
+  padding: 20px;
+  
+  transition: all 1s;
+}
+.todoList-modal ul{
+  margin: 0;
+  padding: 20px 0;
+}
+.todoList-modal input{
+  color: #fff;
+  outline-style: none;
+  border:0;
+  border-bottom: 1px solid #fff;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.todoList-text{
+  list-style-type: none;
+}
+
+.todoList-text li input[checked] + label{
+  text-decoration: line-through;
+}
