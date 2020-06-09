@@ -25,6 +25,15 @@ footer {
   height: 45px;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#layout-weather {
+  width: 20%;
+}
+
 #layout-bg-info {
   text-align: left;
   width: 20%;

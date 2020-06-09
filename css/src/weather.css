@@ -1,0 +1,95 @@
+.current {
+  font-size: 30px;
+  position: relative;
+  text-align: right;
+}
+.location {
+  font-size: 60%;
+  color: rgb(221, 221, 221);
+}
+/* 모달창 */
+.selected-forecast {
+  position: absolute;
+  top: 90px;
+  right: 10px;
+  padding: 25px;
+  width: 560px;
+
+  border-radius: 5px;
+  background-color: rgba(32, 32, 32, 0.95);
+
+  transform: translate3d(3px, -3px, 0);
+  opacity: 0;
+  transition: all ease-in-out 180ms;
+}
+.selected-forecast:after {
+  content: "";
+  display: block;
+  border: 8px transparent solid;
+  border-bottom: 8px rgb(34, 34, 34) solid;
+
+  position: absolute;
+  top: -16px;
+  right: 30px;
+}
+.selected {
+  font-size: 25px;
+  text-align: left;
+}
+
+.selected-icon {
+  font-size: 290%;
+}
+.selected-atmos {
+  color: rgb(172, 172, 172);
+  font-size: 20px;
+}
+.selected-status {
+  color: rgb(184, 184, 184);
+  font-size: 90%;
+}
+.selected-summary {
+  font-weight: 400;
+}
+.selected-temp-high {
+  font-size: 340%;
+  letter-spacing: -1px;
+}
+.selected-temp-low {
+  margin-left: -8px;
+  font-size: 200%;
+  color: gray;
+}
+.forecast-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+
+  border-top: 1px solid rgb(54, 54, 54);
+  padding-top: 10px;
+}
+.forecast-list [class$="icon"] {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.forecast-list .forecast-item:hover {
+  border-radius: 2px;
+  background-color: rgb(73, 73, 73);
+}
+
+.forecast-item {
+  padding: 5px 8px;
+}
+.forecast-item .item-temp-low {
+  color: grey;
+}
+.item-name {
+  color: rgb(124, 124, 124);
+}
+
+/* EVENT DRIVEN */
+.weather-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
