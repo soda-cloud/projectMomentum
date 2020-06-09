@@ -1,0 +1,64 @@
+/*clock*/
+#layout-clock{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-digital, .clock-percent{
+    font-size: 1050%;
+}
+
+
+/*clock-button*/
+.clock-toggle-btn::before{  
+    content:"\f362";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: grey;
+    font-size: 120%;
+    
+    
+}
+
+.clock-toggle-btn {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border-style: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.clock-active{
+    display: none;
+}
+
+/*quote*/
+.quote-text{
+    font-size: 18px;
+}
+
+.quote-author{
+    transition: all 2s;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.quote-alter-btn{
+    display: inline;
+}
+
+#layout-quote:hover > .quote-text{
+    transition: all 1s;
+    transform: translateY(-10px);
+}
+
+#layout-quote:hover > .quote-author{
+    transition: all 1s;
+    display: block;
+    opacity: 1;
+    transform: translateY(0px);
+}
+
