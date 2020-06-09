@@ -9,6 +9,7 @@
 @import "./src/greeting.css";
 @import "./src/mainTodo.css";
 @import "./src/todoList.css";
+@import "./src/clock-quote.css";
 
 * {
   box-sizing: border-box;

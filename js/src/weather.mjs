@@ -110,10 +110,12 @@ const render = () => {
   template.forecast();
 };
 
-const setState = (current, daily, timezone) => {
+const setState = (lat, lon, current, daily, timezone) => {
   localStorage.setItem(
     "weatherState",
     JSON.stringify({
+      lat,
+      lon,
       current: {
         dt: current.dt,
         temp: current.temp,
@@ -127,22 +129,42 @@ const setState = (current, daily, timezone) => {
 };
 
 const getData = async () => {
-  const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${37.5326}&lon=${127.024612}&exclude=hourly${needForecast}&appid=${API_KEY}&units=${unitSetting}`;
+  const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${state.lat}&lon=${state.lon}&exclude=hourly${needForecast}&appid=${API_KEY}&units=${unitSetting}`;
 
   const response = await fetch(URL).catch(console.log);
   const data = await response.json();
-  const { current, daily, timezone } = data;
+  const { lat, lon, current, daily, timezone } = data;
 
-  setState(current, daily, timezone);
+  setState(lat, lon, current, daily, timezone);
 };
+
+const askLocation = async () => {
+  navigator.geolocation.getCurrentPosition(successToLocate, failtoLocate);
+};
+const successToLocate = (res) => {
+  state = JSON.parse(localStorage.getItem("weatherState"));
+  localStorage.setItem(
+    "weatherState",
+    JSON.stringify({
+      ...state,
+      lat: res.coords.latitude,
+      lon: res.coords.longitude,
+    })
+  );
+  getData();
+};
+const failtoLocate = (e) => console.log("rejected to locate :" + e);
 
 const initWeather = async () => {
   if (!state) await getData();
   render();
+  await askLocation();
 };
 
 $layoutWeather.onclick = ({ target }) => {
+  console.log(target);
   if (!target.matches(".location")) return;
+  console.log(target);
   const $modal = document.querySelector(".selected-forecast");
   $modal.classList.toggle("weather-active");
 };
