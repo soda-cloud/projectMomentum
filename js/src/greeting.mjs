@@ -11,7 +11,7 @@ const modifyBtn = greetingsUserIs.querySelector('i')
 
 // State
 let user = { name: '' }
-
+let textSize = 1
 const USER_LS = 'user'
 
 // function
@@ -31,9 +31,11 @@ const clock = () => {
 }
 
 const inputPage = () => {
+  userInputText.value = ''
   greetingsUserNot.classList.remove('greeting-showing')
   greetingsUserIs.classList.add('greeting-showing')
   userInputText.addEventListener('keypress', userInput)
+  userInputText.addEventListener('keydown', inputSize)
 }
 const greetingPage = ({ name }) => {
   greetingsUserNot.classList.add('greeting-showing')
@@ -54,6 +56,11 @@ const userNameIs = () => {
 }
 
 // Event
+const inputSize = e => {
+  // e.target.value.length 글자 수
+
+  userInputText.setAttribute('size', +length + 1)
+}
 const userInput = e => {
   if (e.keyCode !== 13) return
   saveUserName(e.target.value.trim())

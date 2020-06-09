@@ -3,8 +3,9 @@
 
 /* modules */
 @import "./src/layout.css";
-/* @import "./src/background.css";
-@import "./src/weather.css"; */
+@import "./src/greeting.css";
+@import "./src/background.css";
+/*@import "./src/weather.css"; */
 
 * {
   box-sizing: border-box;
@@ -35,18 +36,6 @@ body {
 }
 
 
-/*greeting*/
-.greeting-showing{
-  display: none;
-}
-#layout-greetings{
-  font-size: 337.5%
-}
-#layout-greetings .greetings-userNot input{
-  color: #fff;
-  border: 0px;
-  border-bottom: 1px solid #fff;
-}
 
 /*main-todo*/
 .main-todo-showing{
